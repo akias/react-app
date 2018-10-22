@@ -7,9 +7,16 @@ import * as serviceWorker from './serviceWorker';
 class Header extends Component {
   render () {
     const word = 'new app'
+    const isGoodWord = false
     return (
       <div>
-        <h1>React {word}</h1>
+        <h1>
+          React {word}
+          {isGoodWord
+          ? <strong> is good</strong>
+          : <span> is not good</span>
+          }
+        </h1>
       </div>
     )
   }
