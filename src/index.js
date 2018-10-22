@@ -8,13 +8,15 @@ class Header extends Component {
   render () {
     const word = 'new app'
     const isGoodWord = false
+    const goodWord = <strong> is good</strong>
+    const badWord = <span> is not good</span>
     return (
       <div>
         <h1>
           React {word}
           {isGoodWord
-          ? <strong> is good</strong>
-          : <span> is not good</span>
+          ? goodWord
+          : badWord
           }
         </h1>
       </div>
