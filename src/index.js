@@ -5,19 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 class Header extends Component {
+  renderGoodWord (goodWord, badWord) {
+    const isGoodWord = true
+    return isGoodWord ? goodWord : badWord
+  }
+
   render () {
     const word = 'new app'
-    const isGoodWord = false
-    const goodWord = <strong> is good</strong>
-    const badWord = <span> is not good</span>
     return (
       <div>
         <h1>
           React {word}
-          {isGoodWord
-          ? goodWord
-          : badWord
-          }
+          {this.renderGoodWord(
+          <strong> is good</strong>,
+          <span> is not good</span>
+        )}
         </h1>
       </div>
     )
