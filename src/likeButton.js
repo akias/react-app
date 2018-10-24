@@ -15,9 +15,11 @@ class LikeButton extends Component {
   }
 
   render () {
+    const likedText = this.props.likedText || '取消'
+    const unLikedText = this.props.unLikedText || '点赞'
     return (
       <button onClick={this.handleClickOnLikeButton.bind(this)}>
-        {this.state.isLiked ? '取消' : '点赞'} 👍 
+        {this.state.isLiked ? likedText : unLikedText} 👍 
       </button>
     )
   }

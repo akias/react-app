@@ -12,7 +12,7 @@ class Header extends Component {
     return (
       <div>
         <Title />
-        <LikeButton />
+        <LikeButton likedText = '已赞' unLikedText = '赞'/>
       </div>
     )
   }
