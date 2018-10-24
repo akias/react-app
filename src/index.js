@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Title from './title';
+import LikeButton from './likeButton'
 
 class Header extends Component {
   render () {
@@ -11,6 +12,7 @@ class Header extends Component {
     return (
       <div>
         <Title />
+        <LikeButton />
       </div>
     )
   }
