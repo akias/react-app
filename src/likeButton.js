@@ -6,20 +6,12 @@ class LikeButton extends Component {
   constructor () {
     super()
     this.state = { isLiked: false }
-    // this.state = { count: 0, isLiked: false }
   }
 
   handleClickOnLikeButton () {
-    this.setState((prevState) => {
-      return { count: prevState.count + 1, isLiked: !this.state.isLiked }
+    this.setState({
+      isLiked: !this.state.isLiked
     })
-    // console.log(this.state.isLiked)
-    // console.log(this.state.count)
-    // this.setState((prevState) => {
-    //   return { count: prevState.count + 1, isLiked: !prevState.state }
-    // })
-    // console.log(this.state.isLiked)
-    // console.log(this.state.count)
   }
 
   render () {
