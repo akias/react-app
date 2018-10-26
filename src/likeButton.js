@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 class LikeButton extends Component {
+  static defaultProps = {
+    likedText: '取消',
+    unLikedText: '点赞'
+  }
   constructor () {
     super()
     this.state = { isLiked: false }
@@ -17,7 +21,7 @@ class LikeButton extends Component {
   render () {
     return (
       <button onClick={this.handleClickOnLikeButton.bind(this)}>
-        {this.state.isLiked ? '取消' : '点赞'} 👍 
+        {this.state.isLiked ? this.props.likedText : this.props.unLikedText} 👍 
       </button>
     )
   }
