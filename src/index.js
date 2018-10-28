@@ -5,18 +5,24 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Title from './title';
 import LikeButton from './likeButton'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 class Header extends Component {
   render () {
-    const word = 'new app'
+    // const word = 'new app'
     return (
-      <div>
-        <Title />
-        <LikeButton likedText = '已赞' unLikedText = '赞'/>
-      </div>
+      <BrowserRouter>
+        <div>
+          {/* <Title /> */}
+          <Route path='/books/:id' component={LikeButton} />
+          <App />
+        </div>
+      </BrowserRouter>
+      
     )
   }
 }
+
 ReactDOM.render(<Header />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 
