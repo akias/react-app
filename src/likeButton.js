@@ -16,13 +16,16 @@ class LikeButton extends Component {
       baseURL: 'http://localhost:2300'
     })
     //console.log(this.props.params)
-    request.get('/books/{this.props.match.params.id}')
+    request.get(`/books/${this.props.match.params.id}`)
       .then(res => {
         console.log(res.data)
         this.setState({
           tickets: res.data.tickets
         });
       })
+      .catch(() => {
+        console.log('book is not found');
+      });
   }
 
   componentDidMount() {
