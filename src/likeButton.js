@@ -8,7 +8,7 @@ class LikeButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      place: '通天閣', //ここに好きな場所を指定。
+      // place: '通天閣', //ここに好きな場所を指定。
     };
   }
   handleGetLatAndLng() {
@@ -18,13 +18,14 @@ class LikeButton extends Component {
       .then((results) => {
       // 以下のGoogle API のレスポンスの例を元に欲しいデータを取得
         console.log(results.data)
+        console.log(results.data.tickets[0])
+        console.log(results.data.tickets[1])
         const data = results.data;
-        const result = data.results[0];
-        const location = result.geometry.location;
+        const ticket_1 = data.tickets[0];
+        const ticket_2 = data.tickets[1];
         this.setState({
-          address: result.formatted_address,
-          lat: location.lat,
-          lng: location.lng,
+          ticket_1: ticket_1.identifier,
+          ticket_2: ticket_2.identifier
         });
       },
       )
@@ -37,9 +38,8 @@ class LikeButton extends Component {
     return (
       <div className="app">
         <h1 className="app-title">緯度軽度検索</h1>
-        <p> 土地名: {this.state.place} </p>
-        <p> 経度: {this.state.lat}</p>
-        <p> 経度: {this.state.lng}</p>
+        <p> ticket_1: {this.state.ticket_1} </p>
+        <p> ticket_2: {this.state.ticket_2}</p>
         <input
           type="button"
           value="経度・緯度を検索"
