@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import LikeButton from './likeButton'
+import Book from './book'
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
 import Error from './error'
 import Login from './login'
@@ -14,7 +14,7 @@ class Header extends Component {
         <div>
           <Switch>
             <Route path='/' exact component={Login} />
-            <Route path='/books/:id' component={LikeButton} />
+            <Route path='/books/:id' component={Book} />
             <Route path='/error' component={Error} />
           </Switch>
         </div>

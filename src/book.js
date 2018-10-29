@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios';
 import ReactSwipe from 'react-swipe';
+import Ticket from './ticket'
 
-class LikeButton extends React.Component {
+class Book extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,9 +36,7 @@ class LikeButton extends React.Component {
           {this.state.tickets.map((ticket) => 
           <div>
             <div key={ticket.id}>{this.state.book_title}</div>
-            <div key={ticket.id}>
-              {ticket.identifier}
-            </div>
+            <Ticket ticket= {ticket} />
           </div>
           )}
         </ReactSwipe>
@@ -46,5 +45,4 @@ class LikeButton extends React.Component {
   }
 }
 
-
-export default LikeButton;
+export default Book;
