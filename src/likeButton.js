@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import './index.css'
 import axios from 'axios';
+import ReactSwipe from 'react-swipe';
+import ReactDOM from 'react-dom';
 
-class LikeButton extends Component {
+class LikeButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,20 +28,17 @@ class LikeButton extends Component {
 
   render() {
     const tickets = this.state.tickets.map(ticket => {
-      return <li key={ticket.id}>{ticket.identifier}</li>;
+      return <div>{ticket.identifier}</div>;
     });
 
     return (
-      <Fragment>
-        <div className="app">
-        <h1 className="app-title">ticket</h1>
-        <div>
-          <ul>
-            {tickets}
-          </ul>
-        </div>
-      </div>
-      </Fragment>
+      <ReactSwipe className="carousel" swipeOptions={{continuous:false,auto:3000}} key={this.state.tickets.length}>
+          {this.state.tickets.map((ticket) => 
+            <div key={ticket.id}>
+              {ticket.identifier}
+            </div>
+          )}
+      </ReactSwipe>
     );
   }
 }

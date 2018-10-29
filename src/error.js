@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Error extends Component {
   render () {
     return (
-      <h1>not fount ticket</h1>
+      <h1>not found ticket</h1>
     )
   }
 }
