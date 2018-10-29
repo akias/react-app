@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Title from './title';
 import LikeButton from './likeButton'
+import { Switch, BrowserRouter, Route } from 'react-router-dom'
+import Error from './error'
+import Login from './login'
 
 class Header extends Component {
   render () {
-    const word = 'new app'
     return (
-      <div>
-        <Title />
-        <LikeButton likedText = '已赞' unLikedText = '赞'/>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path='/' exact component={Login} />
+            <Route path='/books/:id' component={LikeButton} />
+            <Route path='/error' component={Error} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+      
     )
   }
 }
+
 ReactDOM.render(<Header />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 
