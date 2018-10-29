@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios';
 import ReactSwipe from 'react-swipe';
-import ReactDOM from 'react-dom';
 
 class LikeButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tickets: []
+      tickets: [],
+      book_title: ''
     };
   }
 
@@ -15,10 +15,12 @@ class LikeButton extends React.Component {
     const request = axios.create({
       baseURL: 'http://localhost:2300'
     })
+
     request.get(`/books/${this.props.match.params.id}`)
       .then(res => {
         this.setState({
-          tickets: res.data.tickets
+          tickets: res.data.tickets,
+          book_title: res.data.book.title
         });
       })
       .catch(() => {
@@ -27,18 +29,19 @@ class LikeButton extends React.Component {
   }
 
   render() {
-    const tickets = this.state.tickets.map(ticket => {
-      return <div>{ticket.identifier}</div>;
-    });
-
     return (
-      <ReactSwipe className="carousel" swipeOptions={{continuous:false,auto:3000}} key={this.state.tickets.length}>
+      <div>
+        <ReactSwipe className="carousel" swipeOptions={{continuous:false,auto:3000}} key={this.state.tickets.length}>
           {this.state.tickets.map((ticket) => 
+          <div>
+            <div key={ticket.id}>{this.state.book_title}</div>
             <div key={ticket.id}>
               {ticket.identifier}
             </div>
+          </div>
           )}
-      </ReactSwipe>
+        </ReactSwipe>
+      </div> 
     );
   }
 }
