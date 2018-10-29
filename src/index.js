@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Title from './title';
 import LikeButton from './likeButton'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { Switch, BrowserRouter, Route } from 'react-router-dom'
+import Error from './error'
+import Login from './login'
 
 class Header extends Component {
   render () {
-    // const word = 'new app'
     return (
       <BrowserRouter>
         <div>
-          {/* <Title /> */}
-          <Route path='/books/:id' component={LikeButton} />
-          <App />
+          <Switch>
+            <Route path='/' exact component={Login} />
+            <Route path='/books/:id' component={LikeButton} />
+            <Route path='/error' component={Error} />
+          </Switch>
         </div>
       </BrowserRouter>
       

@@ -11,26 +11,18 @@ class LikeButton extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.match.params.id);
     const request = axios.create({
       baseURL: 'http://localhost:2300'
     })
-    //console.log(this.props.params)
     request.get(`/books/${this.props.match.params.id}`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           tickets: res.data.tickets
         });
       })
       .catch(() => {
-        console.log('book is not found');
+        this.props.history.push('/error')
       });
-  }
-
-  componentDidMount() {
-    console.log("打印props");
-    console.log(this.props.match);
   }
 
   render() {
